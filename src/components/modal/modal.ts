@@ -73,12 +73,13 @@ export class Modal extends ComponentBase {
         this.jElement.modal('dispose');
     }
 
-    public setOptions(options: IModalOptions) {
-        this.options = options;
-        this.jElement.modal(options);
-    }
+    private optionsChanged(options: IModalOptions) {
+        if (options != null) {
+            if (this.options.show == null) {
+                this.options.show = false;
+            }
 
-    private optionsChanged(newValue: IModalOptions) {
-        this.jElement.modal(newValue);
+            this.jElement.modal(options);
+        }
     }
 }

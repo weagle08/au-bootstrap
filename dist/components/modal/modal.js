@@ -55,12 +55,13 @@ define(["require", "exports", "aurelia-dependency-injection", "aurelia-framework
         dispose() {
             this.jElement.modal('dispose');
         }
-        setOptions(options) {
-            this.options = options;
-            this.jElement.modal(options);
-        }
-        optionsChanged(newValue) {
-            this.jElement.modal(newValue);
+        optionsChanged(options) {
+            if (options != null) {
+                if (this.options.show == null) {
+                    this.options.show = false;
+                }
+                this.jElement.modal(options);
+            }
         }
     };
     __decorate([
