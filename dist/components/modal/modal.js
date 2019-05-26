@@ -22,6 +22,9 @@ define(["require", "exports", "aurelia-dependency-injection", "aurelia-framework
         }
         attached() {
             if (this.options != null) {
+                if (this.options.show == null) {
+                    this.options.show = false;
+                }
                 this.jElement.modal(this.options);
             }
             this.jElement.on('show.bs.modal', () => {
@@ -51,6 +54,9 @@ define(["require", "exports", "aurelia-dependency-injection", "aurelia-framework
         }
         dispose() {
             this.jElement.modal('dispose');
+        }
+        optionsChanged(newValue) {
+            this.jElement.modal(newValue);
         }
     };
     __decorate([

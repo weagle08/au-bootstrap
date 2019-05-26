@@ -28,6 +28,10 @@ export class Modal extends ComponentBase {
 
     public attached() {
         if (this.options != null) {
+            if (this.options.show == null) {
+                this.options.show = false;
+            }
+
             this.jElement.modal(this.options);
         }
 
@@ -67,5 +71,9 @@ export class Modal extends ComponentBase {
 
     public dispose(): void {
         this.jElement.modal('dispose');
+    }
+
+    private optionsChanged(newValue: IModalOptions) {
+        this.jElement.modal(newValue);
     }
 }
