@@ -2,6 +2,7 @@ define(["require", "exports", "aurelia-framework", "./components/modal/modal"], 
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Modal = modal_1.Modal;
+    exports.ModalEvents = modal_1.ModalEvents;
     function configure(config) {
         config.globalResources([
             aurelia_framework_1.PLATFORM.moduleName('./components/modal/modal'),
