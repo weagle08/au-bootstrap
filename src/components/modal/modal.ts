@@ -1,6 +1,7 @@
-import { ComponentBase } from '../ComponentBase';
 import { autoinject } from 'aurelia-dependency-injection';
 import { bindable } from 'aurelia-framework';
+import { EventUtils } from '../../utils/EventUtils';
+import { ComponentBase } from '../ComponentBase';
 
 @autoinject
 export class Modal extends ComponentBase {
@@ -11,7 +12,9 @@ export class Modal extends ComponentBase {
     }
 
     public attached() {
-
+        this.jElement.on('shown.bs.modal', () => {
+            EventUtils.fireEvent('shown', this._domElement);
+        });
     }
 
     public show(): void {
