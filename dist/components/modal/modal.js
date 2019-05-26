@@ -10,23 +10,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 define(["require", "exports", "aurelia-dependency-injection", "aurelia-framework", "../../utils/EventUtils", "../ComponentBase"], function (require, exports, aurelia_dependency_injection_1, aurelia_framework_1, EventUtils_1, ComponentBase_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    exports.ModalEvents = {
+        SHOW: 'show',
+        SHOWN: 'shown',
+        HIDE: 'hide',
+        HIDDEN: 'hidden'
+    };
     let Modal = class Modal extends ComponentBase_1.ComponentBase {
         constructor(element) {
             super(element);
         }
         attached() {
-            this.jElement.modal(this.options);
+            if (this.options != null) {
+                this.jElement.modal(this.options);
+            }
             this.jElement.on('show.bs.modal', () => {
-                EventUtils_1.EventUtils.fireEvent('show', this._domElement);
+                EventUtils_1.EventUtils.fireEvent(exports.ModalEvents.SHOW, this._domElement);
             });
             this.jElement.on('shown.bs.modal', () => {
-                EventUtils_1.EventUtils.fireEvent('shown', this._domElement);
+                EventUtils_1.EventUtils.fireEvent(exports.ModalEvents.SHOWN, this._domElement);
             });
             this.jElement.on('hide.bs.modal', () => {
-                EventUtils_1.EventUtils.fireEvent('hide', this._domElement);
+                EventUtils_1.EventUtils.fireEvent(exports.ModalEvents.HIDE, this._domElement);
             });
             this.jElement.on('hidden.bs.modal', () => {
-                EventUtils_1.EventUtils.fireEvent('hidden', this._domElement);
+                EventUtils_1.EventUtils.fireEvent(exports.ModalEvents.HIDDEN, this._domElement);
             });
         }
         show() {

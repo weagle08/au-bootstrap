@@ -1,6 +1,3 @@
-import { autoinject } from 'aurelia-dependency-injection';
-
-@autoinject
 export abstract class ComponentBase {
     protected _domElement: Element;
 
@@ -9,6 +6,6 @@ export abstract class ComponentBase {
     }
 
     protected get jElement(): JQuery<Element> {
-        return $(this._domElement);
+        return $(this._domElement.firstElementChild);
     }
 }

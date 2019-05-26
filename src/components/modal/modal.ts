@@ -10,6 +10,13 @@ export interface IModalOptions {
     show: boolean;
 }
 
+export const ModalEvents = {
+    SHOW: 'show',
+    SHOWN: 'shown',
+    HIDE: 'hide',
+    HIDDEN: 'hidden'
+};
+
 @autoinject
 export class Modal extends ComponentBase {
     @bindable public size: 'modal-sm' | 'modal-lg' | 'modal-xl' | undefined;
@@ -20,22 +27,24 @@ export class Modal extends ComponentBase {
     }
 
     public attached() {
-        this.jElement.modal(this.options);
+        if (this.options != null) {
+            this.jElement.modal(this.options);
+        }
 
         this.jElement.on('show.bs.modal', () => {
-            EventUtils.fireEvent('show', this._domElement);
+            EventUtils.fireEvent(ModalEvents.SHOW, this._domElement);
         });
 
         this.jElement.on('shown.bs.modal', () => {
-            EventUtils.fireEvent('shown', this._domElement);
+            EventUtils.fireEvent(ModalEvents.SHOWN, this._domElement);
         });
 
         this.jElement.on('hide.bs.modal', () => {
-            EventUtils.fireEvent('hide', this._domElement);
+            EventUtils.fireEvent(ModalEvents.HIDE, this._domElement);
         });
 
         this.jElement.on('hidden.bs.modal', () => {
-            EventUtils.fireEvent('hidden', this._domElement);
+            EventUtils.fireEvent(ModalEvents.HIDDEN, this._domElement);
         });
 
     }
