@@ -55,6 +55,10 @@ define(["require", "exports", "aurelia-dependency-injection", "aurelia-framework
         dispose() {
             this.jElement.modal('dispose');
         }
+        setOptions(options) {
+            this.options = options;
+            this.jElement.modal(options);
+        }
         optionsChanged(newValue) {
             this.jElement.modal(newValue);
         }
