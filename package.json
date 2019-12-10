@@ -1,6 +1,6 @@
 {
   "name": "au-bootstrap",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "aurelia web components for bootstrap 4",
   "main": "dist/index.js",
   "types": "src/index.ts",
