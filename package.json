@@ -1,5 +1,5 @@
 {
-  "name": "au-bootstrap",
+  "name": "@sameke/au-bootstrap",
   "version": "0.0.1",
   "description": "aurelia web components for bootstrap 4",
   "main": "dist/index.js",
