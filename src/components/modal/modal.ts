@@ -19,7 +19,7 @@ export const ModalEvents = {
 
 @autoinject
 export class Modal extends ComponentBase {
-    @bindable public size: 'modal-sm' | 'modal-lg' | 'modal-xl' | undefined;
+    @bindable public size: 'modal-sm' | 'modal-lg' | 'modal-xl';
     @bindable public options: IModalOptions;
 
     constructor(element: Element) {
