@@ -17,4 +17,11 @@ export class TooltipCustomAttribute extends ComponentBase {
             title: this.value
         });
     }
+
+    private valueChanged(newValue: string) {
+        console.log(newValue);
+        this.jElement.tooltip({
+            title: this.value
+        });
+    }
 }
