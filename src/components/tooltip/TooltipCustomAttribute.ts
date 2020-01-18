@@ -1,7 +1,6 @@
 import { autoinject, bindable, containerless } from 'aurelia-framework';
 import { ComponentBase } from '../ComponentBase';
 
-@containerless
 @autoinject
 export class TooltipCustomAttribute extends ComponentBase {
     @bindable public value: string;
@@ -14,7 +13,7 @@ export class TooltipCustomAttribute extends ComponentBase {
         console.log('tooltip');
         console.log(this.value);
         this.jElement.tooltip({
-            title: this.value
+            title: 'hello world'
         });
     }
 
