@@ -1,1 +1,0 @@
-{"version":3,"sources":["../src/components/ComponentBase.ts"],"names":[],"mappings":";;;IAAA,MAAsB,aAAa;QAG/B,YAAY,OAAgB;YACxB,IAAI,CAAC,WAAW,GAAG,OAAO,CAAC;QAC/B,CAAC;QAED,IAAc,QAAQ;YAClB,OAAO,CAAC,CAAC,IAAI,CAAC,WAAW,CAAC,iBAAiB,CAAC,CAAC;QACjD,CAAC;KACJ;IAVD,sCAUC","file":"ComponentBase.js","sourceRoot":"../"}
