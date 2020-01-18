@@ -11,6 +11,8 @@ export class TooltipCustomAttribute extends ComponentBase {
     }
 
     private attached() {
+        console.log('tooltip');
+        console.log(this.value);
         this.jElement.tooltip({
             title: this.value
         });
