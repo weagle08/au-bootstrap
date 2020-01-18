@@ -47,16 +47,21 @@ export class TooltipCustomAttribute extends ComponentBase {
         console.log(this.title);
         this.jElement.tooltip({
             title: this.title,
-            trigger: this.trigger,
-            animation: this.animation,
-            container: this.container,
-            delay: this.delay,
-            html: this.html,
-            placement: this.placement,
-            selector: this.selector,
-            template: this.template != null ? this.template : undefined,
-            offset: this.offset
+            trigger: this.trigger || 'hover focus',
+            animation: this.animation || true,
+            container: this.container || false,
+            delay: this.delay || 0,
+            html: this.html || false,
+            placement: this.placement || 'top',
+            selector: this.selector || false,
+            offset: this.offset || 0
         } as TooltipOption);
+
+        if (this.template != null) {
+            this.jElement.tooltip({
+                template: this.template
+            });
+        }
     }
 
     private titleChanged(newValue: string) {
@@ -69,7 +74,6 @@ export class TooltipCustomAttribute extends ComponentBase {
             html: this.html,
             placement: this.placement,
             selector: this.selector,
-            template: this.template != null ? this.template : undefined,
             offset: this.offset
         } as TooltipOption);
     }
