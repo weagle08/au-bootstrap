@@ -85,16 +85,20 @@ export class TooltipCustomAttribute extends ComponentBase {
 
         let htmlElement: HTMLElement = this._domElement as HTMLElement;
 
+        console.log('attaching triggers');
+
         let triggers = this.trigger.split(' ');
         for (let trigger of triggers) {
             if (trigger === 'hover') {
                 htmlElement.onmouseover = () => {
+                    console.log('hover');
                     this.show();
                 };
             }
 
             if (trigger === 'focus') {
                 htmlElement.onfocus = () => {
+                    console.log('focus');
                     this.show();
                 };
             }
