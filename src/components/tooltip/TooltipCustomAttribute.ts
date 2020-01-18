@@ -1,9 +1,19 @@
 import { autoinject, bindable, containerless } from 'aurelia-framework';
+import { TooltipOption } from 'bootstrap';
 import { ComponentBase } from '../ComponentBase';
 
 @autoinject
 export class TooltipCustomAttribute extends ComponentBase {
-    public value: string;
+    @bindable({ primaryProperty: true }) public title: string;
+    @bindable public trigger: 'hover' | 'click' | 'focus' | string = 'hover focus';
+    @bindable public animation: boolean = true;
+    @bindable public container: string | Element | false = false;
+    @bindable public delay: number = 0;
+    @bindable public html: boolean = false;
+    @bindable public placement: 'auto' | 'top' | 'bottom' | 'left' | 'right' = 'top';
+    @bindable public selector: string | false = false;
+    @bindable public template: string;
+    @bindable public offset: number | string = 0;
 
     public constructor(element: Element) {
         super(element);
@@ -33,26 +43,34 @@ export class TooltipCustomAttribute extends ComponentBase {
         this.jElement.tooltip('disable');
     }
 
-    private bind() {
-        console.log('tooltip');
-        console.log(this.value);
-        this.jElement.tooltip({
-            title: 'hello world'
-        });
-    }
-
     private attached() {
-        console.log('tooltip');
-        console.log(this.value);
+        console.log(this.title);
         this.jElement.tooltip({
-            title: 'hello world'
-        });
+            title: this.title,
+            trigger: this.trigger,
+            animation: this.animation,
+            container: this.container,
+            delay: this.delay,
+            html: this.html,
+            placement: this.placement,
+            selector: this.selector,
+            template: this.template != null ? this.template : undefined,
+            offset: this.offset
+        } as TooltipOption);
     }
 
-    private valueChanged(newValue: string) {
-        console.log(newValue);
+    private titleChanged(newValue: string) {
         this.jElement.tooltip({
-            title: this.value
-        });
+            title: this.title,
+            trigger: this.trigger,
+            animation: this.animation,
+            container: this.container,
+            delay: this.delay,
+            html: this.html,
+            placement: this.placement,
+            selector: this.selector,
+            template: this.template != null ? this.template : undefined,
+            offset: this.offset
+        } as TooltipOption);
     }
 }
