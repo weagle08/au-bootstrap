@@ -47,7 +47,6 @@ export class TooltipCustomAttribute extends ComponentBase {
         console.log(this.title);
         this.jElement.tooltip({
             title: this.title,
-            trigger: this.trigger || 'hover focus',
             animation: this.animation || true,
             container: this.container || false,
             delay: this.delay || 0,
@@ -62,12 +61,13 @@ export class TooltipCustomAttribute extends ComponentBase {
                 template: this.template
             });
         }
+
+        this.attachTriggers();
     }
 
     private titleChanged(newValue: string) {
         this.jElement.tooltip({
             title: this.title,
-            trigger: this.trigger,
             animation: this.animation,
             container: this.container,
             delay: this.delay,
@@ -76,5 +76,28 @@ export class TooltipCustomAttribute extends ComponentBase {
             selector: this.selector,
             offset: this.offset
         } as TooltipOption);
+    }
+
+    private attachTriggers() {
+        if (this.trigger == null) {
+            this.trigger = 'hover focus';
+        }
+
+        let htmlElement: HTMLElement = this._domElement as HTMLElement;
+
+        let triggers = this.trigger.split(' ');
+        for (let trigger of triggers) {
+            if (trigger === 'hover') {
+                htmlElement.onmouseover = () => {
+                    this.show();
+                };
+            }
+
+            if (trigger === 'focus') {
+                htmlElement.onfocus = () => {
+                    this.show();
+                };
+            }
+        }
     }
 }
