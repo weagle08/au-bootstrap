@@ -1,6 +1,6 @@
 import { FrameworkConfiguration, PLATFORM } from 'aurelia-framework';
 
-export { Modal, ModalEvents, IModalOptions } from './components/modal/modal';
+export * from './components/modal/modal';
 
 export function configure(config: FrameworkConfiguration) {
     config.globalResources([
